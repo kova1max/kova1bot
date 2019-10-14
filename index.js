@@ -294,9 +294,9 @@ bot.onText(/\/f (.+)/, function (msg, match) {
 bot.onText(/\/card (.+)/, function (msg, match) {
     var fromId = msg.from.id;
     var resp = match[1];
-        if (chat.id == "-1001486935008") {
+        if ( msg.chat.id == -1001486935008 ) {
             if (resp == "Roma") {
-                bot.sendMessage(msg.chat.id, "5375414115916933 [monobank)\n5168755903290167 [privat24]");
+                bot.sendMessage(msg.chat.id, "5375414115916933 [monobank]\n5168755903290167 [privat24]");
             } else if (resp == "Max") {
                 bot.sendMessage(msg.chat.id, "5168757356951709 [privat24]");            
             } else if (resp == "Stariy") {
