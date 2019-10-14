@@ -239,12 +239,14 @@ function getNextDay (id, group) {
                 day = "в " + numToUkr((now.getDay()) + 1);
 
             }
-                d1 = eval( group + "." + numToEn(now.getDay()+1) + "[0][0]" );
-                d2 = eval( group + "." + numToEn(now.getDay()+1) + "[0][1]" );
-                p = eval( group + "." + numToEn(now.getDay()+1) + "[0][2]" );
-                v = eval( group + "." + numToEn(now.getDay()+1) + "[0][3]" );
-                a = eval( group + "." + numToEn(now.getDay()+1) + "[0][4]" );
-                day = numToUkr("Сьогодні");
+                // if (1) {
+                //     d1 = eval( group + "." + numToEn(now.getDay()+1) + "[0][0]" );
+                //     d2 = eval( group + "." + numToEn(now.getDay()+1) + "[0][1]" );
+                //     p = eval( group + "." + numToEn(now.getDay()+1) + "[0][2]" );
+                //     v = eval( group + "." + numToEn(now.getDay()+1) + "[0][3]" );
+                //     a = eval( group + "." + numToEn(now.getDay()+1) + "[0][4]" );
+                //     day = numToUkr("Сьогодні");
+                // }
         
         }
         d2 == 0 ? d2 = "00" : d2;
@@ -289,16 +291,35 @@ bot.onText(/\/f (.+)/, function (msg, match) {
     }
 );
 
+bot.onText(/\/card (.+)/, function (msg, match) {
+    var fromId = msg.from.id;
+    var resp = match[1];
+        if (chat.id == "-1001486935008") {
+            if (resp == "Roma") {
+                bot.sendMessage(msg.chat.id, "5375414115916933 [monobank)\n5168755903290167 [privat24]");
+            } else if (resp == "Max") {
+                bot.sendMessage(msg.chat.id, "5168757356951709 [privat24]");            
+            } else if (resp == "Stariy") {
+                bot.sendMessage(msg.chat.id, "5375414106643975 [monobank]");            
+            } else {
+                bot.sendMessage(msg.chat.id, "Use <b>/card {Roma/Stariy/Max}</b>", { parse_mode: "HTML" } );
+            }
+        } else {
+            bot.sendMessage(msg.chat.id, "This command is not avaliable here");
+        }
+    }
+);
+
 bot.onText(/next/, (msg, match) => {
     getNextOne(msg.chat.id, group);
 });
 
-bot.onText(/test/, (msg, match) => {
-    bot.sendMessage(msg.chat.id, now.getHours());
+bot.onText(/next_day/, (msg, match) => {
+    getNextDay(msg.chat.id, group);
 });
 
 // MY OWN COMMANDS
 
-bot.onText(/who/, (msg, match) => {
-    bot.sendMessage(msg.chat.id, 'Ви не проїбете');
+bot.onText(/admin_eblan/, (msg, match) => {
+    bot.sendMessage(msg.chat.id, 'Ну, ну, ' + msg.from.first_name + ' .. написав адмін');
 });
