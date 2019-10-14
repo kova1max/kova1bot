@@ -300,5 +300,5 @@ bot.onText(/test/, (msg, match) => {
 // MY OWN COMMANDS
 
 bot.onText(/who/, (msg, match) => {
-    bot.sendMessage(msg.chat.id, 'Ви проїбете');
+    bot.sendMessage(msg.chat.id, 'Ви не проїбете');
 });
